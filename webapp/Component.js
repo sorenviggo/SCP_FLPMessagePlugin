@@ -1,30 +1,19 @@
-sap.ui.define([
-	"sap/ui/core/UIComponent",
-	"sap/ui/Device",
-	"dk/sorenviggo/scp/flp/plugin/SCP_FLPMessagePlugin/model/models"
-], function (UIComponent, Device, models) {
-	"use strict";
+(function () {
+    "use strict";
+    jQuery.sap.declare("dk.sorenviggo.scp.flp.plugin.SCP_FLPMessagePlugin.Component");
+    jQuery.sap.require("sap.ui.core.UIComponent");
 
-	return UIComponent.extend("dk.sorenviggo.scp.flp.plugin.SCP_FLPMessagePlugin.Component", {
+    sap.ui.core.UIComponent.extend("dk.sorenviggo.scp.flp.plugin.SCP_FLPMessagePlugin.Component", {
 
-		metadata: {
-			manifest: "json"
-		},
+        // use inline declaration instead of component.json to save 1 round trip
+        metadata : {
+            "manifest": "json"
+        },
 
-		/**
-		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
-		 * @public
-		 * @override
-		 */
-		init: function () {
-			// call the base component's init function
-			UIComponent.prototype.init.apply(this, arguments);
+        createContent : function () {
+        	//Hello world implementation
+        	sap.m.MessageBox.information("Hello - this is a plugin info !");
+        }
 
-			// enable routing
-			this.getRouter().initialize();
-
-			// set the device model
-			this.setModel(models.createDeviceModel(), "device");
-		}
-	});
-});
+    });
+}());
